@@ -156,7 +156,7 @@ cython_debug/
 **/.DS_Store
 
 # image folder
-./data/images
+./data/images/*
 
 # VSCode specific settings file
 .vscode/settings.json
