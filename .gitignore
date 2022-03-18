@@ -159,4 +159,4 @@ cython_debug/
 /data/images
 
 # VSCode specific settings file
-.vscode/settings.json
+.vscode/*
