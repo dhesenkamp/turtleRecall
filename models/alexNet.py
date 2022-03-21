@@ -1,6 +1,6 @@
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Conv2D, BatchNormalization, MaxPool2D, Flatten, Dense, Dropout
-from util import NUM_CLASSES
+from utils import NUM_CLASSES
 
 class AlexNet(Model):
     """AlexNet convolutional neural network as described in Krizhevsky et al., 2012."""
