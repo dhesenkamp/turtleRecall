@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from util import IMAGE_SIZE
+from utils import IMAGE_SIZE
 
 def crop_and_resize(pil_img):
   """Crops square from center of image and resizes."""
