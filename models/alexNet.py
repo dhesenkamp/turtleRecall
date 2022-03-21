@@ -9,7 +9,7 @@ class AlexNet(Model):
         super(AlexNet, self).__init__()
 
         self.all_layers = [
-            Conv2D(filters=96, kernel_size=(11,11), strides=(4,4), activation='relu', input_shape=(224,224,3)), #normally 227 x 277
+            Conv2D(filters=96, kernel_size=(11,11), strides=(4,4), activation='relu', input_shape=(227,227,3)), #normally 227 x 277
             BatchNormalization(),
             MaxPool2D(pool_size=(3,3), strides=(2,2)),
 
