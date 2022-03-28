@@ -27,3 +27,5 @@ pip install tensorflow-macos
 
 # install Tensorflow Metal for GPU support
 pip install tensorflow-metal
+
+pip install tensorflow-addons
