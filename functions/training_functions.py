@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-import tqdm
+from tqdm import tqdm, trange
 
 
 def train_step(model, input, target, loss_function, optimizer):
@@ -32,7 +32,7 @@ def test_step(model, test_data, loss_function):
     return test_loss
 
 
-def training_loop(train_data, test_data, model, loss_function, optimizer, nr_epochs):
+def training_loop(train_data, test_data, model, loss_function, optimizer, nr_epochs, plot=True):
     tf.keras.backend.clear_session()
 
     train_losses = []
@@ -43,13 +43,10 @@ def training_loop(train_data, test_data, model, loss_function, optimizer, nr_epo
     test_losses.append(test_loss)
 
     # training
-    for epoch in tqdm.trange(nr_epochs, unit='epoch', desc='Training progress: ', postfix=f'Loss {test_losses[-1]}'):
-        if epoch % 10 == 0:
-            #print(f'Epoch {str(epoch)}: starting with loss {test_losses[-1]}')
-            pass
+    for epoch in trange(nr_epochs, unit='epoch', desc='Training progress: ', postfix=f'Loss {test_losses[-1]}'):
         
         epoch_loss_aggregator = []
-        for input, target in train_data:
+        for input, target in tqdm(train_data):
             train_loss = train_step(model, input, target, loss_function, optimizer)
             epoch_loss_aggregator.append(train_loss)
         
@@ -58,9 +55,10 @@ def training_loop(train_data, test_data, model, loss_function, optimizer, nr_epo
         test_loss = test_step(model, test_data, loss_function)
         test_losses.append(test_loss)
     
-    plt.figure()
-    plt.plot(train_losses, label='train loss')
-    plt.plot(test_losses, label='test loss')
-    plt.xlabel('epoch')
-    plt.ylabel(f'{loss_function.name}')
-    plt.legend()
+    if plot:
+        plt.figure()
+        plt.plot(train_losses, label='train loss')
+        plt.plot(test_losses, label='test loss')
+        plt.xlabel('epoch')
+        plt.ylabel(f'{loss_function.name}')
+        plt.legend()
