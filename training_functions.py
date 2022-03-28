@@ -7,7 +7,6 @@ import tqdm
 
 
 def train_step(model, input, target, loss_function, optimizer):
-
     with tf.GradientTape() as tape:
         prediction = model(input, training=True)
         loss = loss_function(target, prediction)
@@ -19,7 +18,6 @@ def train_step(model, input, target, loss_function, optimizer):
 
 
 def test_step(model, test_data, loss_function):
-
     #test_accuracy_aggregator = []
     test_loss_aggregator = []
 
