@@ -3,8 +3,11 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
+
 IMAGE_DIR = './data/images'
-BATCH_SIZE = 64
-NUM_CLASSES = 101
+MIN_NR_IMGS = 10
 IMAGE_SIZE = (224, 224)
-NR_EPOCHS = 10
+NUM_CLASSES = 254
+BATCH_SIZE = 128
+NR_EPOCHS = 50
+
