@@ -1,7 +1,7 @@
-# Turtle Recall
-Final Project for 'Implementing ANNs with TensorFlow'
-WS 21/22, Osnabrueck University
-Dennis Hesenkamp, Lennart Zastrow, Madhuri Ramesh
+# Turtle Recall: Wildlife Conservation with Machine Learning
+Final Project for 'Implementing ANNs with TensorFlow'  
+WS 21/22, Osnabrueck University  
+Dennis Hesenkamp, Lennart Zastrow, Madhuri Ramesh  
 
 This repository contains all files associated with our final project for the abovementioned course. Idea and data come from Zindi's [Turtle Recall Conversation Challenge](https://zindi.africa/competitions/turtle-recall-conservation-challenge/data).
 
