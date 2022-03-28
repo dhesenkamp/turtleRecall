@@ -60,7 +60,7 @@ def add_noise(ds, sd=0.3):
     Additive noise
     """
 
-    ds_noise = ds.map(lambda x,y: (x + tf.random.normal(x.shape, mean=0.0, stddev=0.3, dtype=tf.float32), y))
+    ds_noise = ds.map(lambda x,y: (x + tf.random.normal(x.shape, mean=0.0, stddev=sd, dtype=tf.float32), y))
     ds_noise = ds_noise.map(lambda x,y: (tf.clip_by_value(x, 0.0, 1.0), y))
     ds = ds.concatenate(ds_noise)
 
