@@ -6,5 +6,5 @@ import seaborn as sns
 IMAGE_DIR = './data/images'
 BATCH_SIZE = 64
 NUM_CLASSES = 101
-IMAGE_SIZE = (227, 227)
-NR_EPOCHS = 50
+IMAGE_SIZE = (224, 224)
+NR_EPOCHS = 10
