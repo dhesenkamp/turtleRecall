@@ -13,7 +13,7 @@ def rotate_images(ds):
     ds_rotated_180 = ds.map(lambda x,y: (tfa.image.rotate(x, angles=np.pi), y))
     ds_rotated_270 = ds.map(lambda x,y: (tfa.image.rotate(x, angles=1.5*np.pi), y))
 
-    ds = ds.concatenate(ds_rotated_90).concatenate(ds_rotated_180).concatenate(ds_rotated_270)
+    ds = ds_rotated_90.concatenate(ds_rotated_180).concatenate(ds_rotated_270)
 
     return ds
 
@@ -28,9 +28,7 @@ def apply_mean_filter(ds, filter_shape):
     """
 
     ds_mean_filtered = ds.map(lambda x,y: (tfa.image.mean_filter2d(x, filter_shape=filter_shape), y))
-    ds = ds.concatenate(ds_mean_filtered)
-    
-    return ds
+    return ds_mean_filtered
 
 
 def apply_gaussian_filter(ds, filter_shape=7, sigma=2):
@@ -39,9 +37,7 @@ def apply_gaussian_filter(ds, filter_shape=7, sigma=2):
     """
 
     ds_gaussian = ds.map(lambda x,y: (tfa.image.gaussian_filter2d(x, filter_shape=filter_shape, sigma=sigma), y))
-    ds = ds.concatenate(ds_gaussian)
-
-    return ds
+    return ds_gaussian
 
 
 def random_hsv(ds):
@@ -50,9 +46,7 @@ def random_hsv(ds):
     """
 
     ds_hsv = ds.map(lambda x,y: (tfa.image.random_hsv_in_yiq(x, max_delta_hue=0.8, lower_saturation=0.2, upper_saturation=0.8, lower_value=0.2, upper_value=0.8), y))
-    ds = ds.concatenate(ds_hsv)
-
-    return ds
+    return ds_hsv
 
 
 def add_noise(ds, sd=0.3):
@@ -62,6 +56,5 @@ def add_noise(ds, sd=0.3):
 
     ds_noise = ds.map(lambda x,y: (x + tf.random.normal(x.shape, mean=0.0, stddev=sd, dtype=tf.float32), y))
     ds_noise = ds_noise.map(lambda x,y: (tf.clip_by_value(x, 0.0, 1.0), y))
-    ds = ds.concatenate(ds_noise)
 
-    return ds
+    return ds_noise
