@@ -9,7 +9,7 @@ from tensorflow.keras.metrics import CategoricalAccuracy, Precision
 # https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf
 
 
-def create_alexnet():
+def create_compiled_alexnet():
     """
     AlexNet convolutional neural network as described in Krizhevsky et al., 2012.
     Usually works with input of shape (227, 227, 3).
