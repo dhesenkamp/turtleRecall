@@ -11,6 +11,11 @@ def create_compiled_inceptionV3(trainable=True):
     """
     InceptionV3 CNN as per Szegedy et al. (2015)
     https://arxiv.org/abs/1512.00567
+
+    Args:
+        trainable (bool): whether the imported model's parameters are fine-tunable. Default: True
+    Returns:
+        model (Tensorflow model): compiled model, ready to be trained
     """
 
     hub_url = "https://tfhub.dev/google/inaturalist/inception_v3/feature_vector/5"
