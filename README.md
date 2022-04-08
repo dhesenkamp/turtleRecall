@@ -1,5 +1,5 @@
 # Turtle Recall: Wildlife Conservation with Machine Learning
-Final Project for 'Implementing ANNs with TensorFlow'  &nbsp; <kbd>Implementing ANNs with TensorFlow</kbd> &nbsp;
+Final Project for **Implementing ANNs with TensorFlow**  
 WS 21/22, Osnabrueck University  
 Dennis Hesenkamp, Lennart Zastrow, Madhuri Ramesh  
 
