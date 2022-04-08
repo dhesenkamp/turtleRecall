@@ -1,8 +1,12 @@
-import tensorflow as tf
-import tensorflow_hub as hub
+from tensorflow_hub import KerasLayer
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import InputLayer, Dense
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.losses import CategoricalCrossentropy
+from tensorflow.keras.metrics import CategoricalAccuracy, Precision
 
 
-def create_compiled_EfficientNetV2(trainable=False):
+def create_compiled_EfficientNetV2(trainable=True):
     """
     EfficientNetV2 as per Tan and Le (2021)
     https://tfhub.dev/google/imagenet/efficientnet_v2_imagenet1k_b0/feature_vector/2
@@ -11,16 +15,17 @@ def create_compiled_EfficientNetV2(trainable=False):
 
     NUM_CLASSES = 254
 
-    efficientNet = tf.keras.Sequential([
-        tf.keras.layers.Input(shape=(224,224,3)),
-        hub.KerasLayer("https://tfhub.dev/tensorflow/efficientnet/b0/feature-vector/1", trainable=False),
-        tf.keras.layers.Dense(NUM_CLASSES, activation='softmax')
+    hub_url = "https://tfhub.dev/google/imagenet/efficientnet_v2_imagenet21k_b0/feature_vector/2"
+    model = Sequential([
+        InputLayer(input_shape=(224,224,3)),
+        KerasLayer(hub_url, trainable=trainable),
+        Dense(NUM_CLASSES, activation='softmax')
     ])
 
-    efficientNet.compile(
-        optimizer=tf.keras.optimizers.Adam(),
-        loss=tf.keras.losses.CategoricalCrossentropy(),
-        metrics=[tf.keras.metrics.CategoricalAccuracy(), tf.keras.metrics.Precision(top_k=5)]
+    model.compile(
+        optimizer=Adam(),
+        loss=CategoricalCrossentropy(),
+        metrics=[CategoricalAccuracy(), Precision(top_k=5)]
     )
 
-    return efficientNet
+    return model
