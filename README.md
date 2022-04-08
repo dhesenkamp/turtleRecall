@@ -21,4 +21,4 @@ __environment file will be added in due time__
 
 ## Overall Pipeline
 
-The overall pipeline can be executed following the `turtleRecall.ipynb` notebook. The notebook contains useful notes and explanations and guides through the entire process of data acquisition, preprocessing, data augmentation, model creation, and training. It can be seen as a helpful complement to the documentation (`documentation/documentation.pdf`), which describes many of the steps in greater detail and with scientific background.
+The overall pipeline can be executed following the `turtleRecall.ipynb` notebook. The notebook contains useful notes and explanations and guides through the entire process of data acquisition, preprocessing, data augmentation, model creation, and training. It can be seen as a helpful complement to the documentation ([`documentation/documentation.pdf`](https://github.com/dhesenkamp/turtleRecall/blob/main/documentation/documentation.pdf)), which describes many of the steps in greater detail and with scientific background.
