@@ -5,7 +5,7 @@ Dennis Hesenkamp, Lennart Zastrow, Madhuri Ramesh
 
 This repository contains all files associated with our final project for the abovementioned course. Idea and data come from Zindi's [Turtle Recall Conversation Challenge](https://zindi.africa/competitions/turtle-recall-conservation-challenge/data). Implementations are our own if not noted otherwise.
 
-### Virtual environment
+## Virtual environment
 
 To continue, make sure that you have a local distribution of [Conda] installed (e.g. Anaconda, miniconda, miniforge). The code in this repo has been written and tested on an Apple Silicon device with Apple's `tensorflow-macos` distribution.
 
@@ -18,3 +18,7 @@ __environment file will be added in due time__
 `turtleRecall.ipynb`: main notebook  
 `turtleRecallColab.ipynb`: main notebook adapted for use with Google Colab  
 `utils.py`: utilities  
+
+## Overall Pipeline
+
+The overall pipeline can be executed following the `turtleRecall.ipynb` notebook. The notebook contains useful notes and explanations and guides through the entire process of data acquisition, preprocessing, data augmentation, model creation, and training. It can be seen as a helpful complement to the documentation (`documentation/documentation.pdf`), which describes many of the steps in greater detail and with scientific background.
