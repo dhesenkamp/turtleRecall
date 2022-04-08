@@ -160,3 +160,6 @@ cython_debug/
 
 # VSCode specific settings file
 .vscode/*
+
+# cached datasets from TensorFlow
+**/*cached*
