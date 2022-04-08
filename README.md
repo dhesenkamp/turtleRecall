@@ -11,10 +11,10 @@ To continue, make sure that you have a local distribution of [Conda] installed (
 
 __environment file will be added in due time__
 
-`data`: contains .csv files with image IDs and associated turtle IDs
-`documentation`: written documentation of the project, including .tex files
-`functions`: helper functions 
-`models`: code to create the models we used
-`turtleRecall.ipynb`: main notebook
-`turtleRecallColab.ipynb`: main notebook adapted for use with Google Colab
-`utils.py`: utilities
+`data`: contains .csv files with image IDs and associated turtle IDs  
+`documentation`: written documentation of the project, including .tex files  
+`functions`: helper functions  
+`models`: code to create the models we used  
+`turtleRecall.ipynb`: main notebook  
+`turtleRecallColab.ipynb`: main notebook adapted for use with Google Colab  
+`utils.py`: utilities  
