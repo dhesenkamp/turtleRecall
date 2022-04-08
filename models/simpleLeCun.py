@@ -4,8 +4,10 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Activation, Dro
 
 def create_compiled_LeCun():
     """
-    Taken from Chollet's blog post on image classification:
+    LeCun convolutional network. Adapted from Chollet's blog post on image classification:
     https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html
+
+    Expects input shape of 150x150x3, adapt preprocessing accordingly.
     """
 
     model = Sequential([
@@ -21,7 +23,7 @@ def create_compiled_LeCun():
         Activation('relu'),
         MaxPooling2D(pool_size=(2, 2)),
 
-        Flatten(),  # this converts our 3D feature maps to 1D feature vectors
+        Flatten(),
         Dense(64),
         Activation('relu'),
         Dropout(0.5),
