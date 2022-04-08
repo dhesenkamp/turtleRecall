@@ -1,6 +1,5 @@
-from pickletools import optimize
-from tensorlfow.keras import Sequential
 from tensorflow_hub import KerasLayer
+from tensorlfow.keras import Sequential
 from tensorflow.keras.layers import InputLayer, Dense
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import CategoricalCrossentropy
@@ -15,7 +14,7 @@ def create_compiled_inceptionV3(trainable=True):
     """
 
     hub_url = "https://tfhub.dev/google/inaturalist/inception_v3/feature_vector/5"
-    
+
     model = Sequential([
         InputLayer(input_shape=(224,224,3)),
         KerasLayer(hub_url, trainable=trainable),
