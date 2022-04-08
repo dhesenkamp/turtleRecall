@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+
+%packages
+\usepackage{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage[detect-all]{siunitx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[natbibapa]{apacite}
+
+\newgeometry{
+    top=2cm,
+    bottom=2cm,
+    left=3cm,
+    right=3cm
+}
+
+% title page
+\begin{document}
+\begin{titlepage}
+	\centering
+	%emblem of Uni Osnabrueck
+	{\scshape\LARGE University of Osnabrueck \par}
+	\vspace{1cm}
+	\includegraphics[width=0.5\textwidth]{images/Logo-Uni-Osnabrueck.jpg}\par\vspace{2cm}
+	\vspace{0.75cm}
+	{\scshape\Large Implementing ANNs with TensorFlow\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Turtle Recognition Using Deep Convolutional Neural Networks\par}
+	\vspace{1.5cm}
+	{\Large\itshape Dennis Hesenkamp, Lennart Zastrow,  Madhuri Ramesh\par}
+	\vspace{1.5cm}
+	supervised by\par
+	\textsc{Charlotte Lange}
+	\vfill
+
+	{\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\begin{abstract}
+    Here is room for an abstract.
+\end{abstract}
+
+\input{sections/Background}
+\input{sections/GrantSpeciesConservation}
+\input{sections/ConvolutionalNeuralNetworks}
+\input{sections/Data}
+\input{sections/Models}
+\input{sections/Evaluation}
+\input{sections/OpenQuestionsFutureOutlook}
+
+\bibliographystyle{apacite}
+\bibliography{references}
+
+\newpage
+\input{sections/Appendix}
+
+\end{document}
