@@ -1,5 +1,5 @@
 # Turtle Recall: Wildlife Conservation with Machine Learning
-Final Project for 'Implementing ANNs with TensorFlow'  
+Final Project for 'Implementing ANNs with TensorFlow'  &nbsp; <kbd>Implementing ANNs with TensorFlow</kbd> &nbsp;
 WS 21/22, Osnabrueck University  
 Dennis Hesenkamp, Lennart Zastrow, Madhuri Ramesh  
 
@@ -11,13 +11,13 @@ To continue, make sure that you have a local distribution of [Conda] installed (
 
 __environment file will be added in due time__
 
-`data`: contains .csv files with image IDs and associated turtle IDs  
-`documentation`: written documentation of the project, including .tex files  
-`functions`: helper functions  
-`models`: code to create the models we used  
-`turtleRecall.ipynb`: main notebook  
-`turtleRecallColab.ipynb`: main notebook adapted for use with Google Colab  
-`utils.py`: utilities  
+- `data`: Contains dataframes as .csv files with image IDs and associated turtle IDs  
+- `documentation`: Written documentation of the project, including LaTeX source files  
+- `functions`: helper functions  
+- `models`: code to create the models we used  
+- `turtleRecall.ipynb`: main notebook  
+- `turtleRecallColab.ipynb`: main notebook adapted for use with Google Colab  
+- `utils.py`: utilities  
 
 ## Overall Pipeline
 
