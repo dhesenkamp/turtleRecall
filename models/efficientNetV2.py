@@ -4,6 +4,7 @@ from tensorflow.keras.layers import InputLayer, Dense
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import CategoricalCrossentropy
 from tensorflow.keras.metrics import CategoricalAccuracy, Precision
+from utils import NUM_CLASSES
 
 
 def create_compiled_EfficientNetV2(trainable=True):
@@ -13,9 +14,8 @@ def create_compiled_EfficientNetV2(trainable=True):
     https://arxiv.org/abs/2104.00298v2
     """
 
-    NUM_CLASSES = 254
-
     hub_url = "https://tfhub.dev/google/imagenet/efficientnet_v2_imagenet21k_b0/feature_vector/2"
+    
     model = Sequential([
         InputLayer(input_shape=(224,224,3)),
         KerasLayer(hub_url, trainable=trainable),
