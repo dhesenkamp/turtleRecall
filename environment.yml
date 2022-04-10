@@ -1,0 +1,13 @@
+name: turtleRecall
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - tensorflow-deps
+  - jupyter
+  - pandas
+  - seaborn
+  - tqdm
+  - tensorflow-hub
+  - scikit-learn
+prefix: /Users/dhesenkamp/miniforge3/envs/turtleRecall
