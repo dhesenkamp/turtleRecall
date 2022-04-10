@@ -1,10 +1,10 @@
 from tensorflow_hub import KerasLayer
-from tensorlfow.keras import Sequential
+from tensorflow.keras import Sequential
 from tensorflow.keras.layers import InputLayer, Dense
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import CategoricalCrossentropy
 from tensorflow.keras.metrics import CategoricalAccuracy, Precision
-from utils import NUM_CLASSES
+from utils import NUM_CLASSES, INPUT_SHAPE
 
 
 def create_compiled_inceptionV3(trainable=True):
@@ -21,7 +21,7 @@ def create_compiled_inceptionV3(trainable=True):
     hub_url = "https://tfhub.dev/google/inaturalist/inception_v3/feature_vector/5"
 
     model = Sequential([
-        InputLayer(input_shape=(224,224,3)),
+        InputLayer(input_shape=INPUT_SHAPE),
         KerasLayer(hub_url, trainable=trainable),
         Dense(NUM_CLASSES, activation='softmax')
     ])

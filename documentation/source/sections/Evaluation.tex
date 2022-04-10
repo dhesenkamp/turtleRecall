@@ -1,2 +1,42 @@
 \section{Evaluation}
 
+
+When finally wanting to run and evaluate the models, we encountered problems with the execution of our pipeline. It turned out that the training process requires dramatically more computational resources than we anticipated - more, at least, than our local machines could handle. We tried different approaches to cope with this problem: As a first step, we skipped the AlexNet as baseline model. It has a huge number of trainable parameters compared to the pre-trained EfficientNetV2 (small amount of trainable parameters) and InceptionV3 (somewhat in the middle between the former two), requiring much more backpropagation computations within the training. Unfortunately, just having fewer trainable parameters did not reduce the computational load enough for us to be able to train the models.
+
+\textbf{INSERT TABLE WITH PARAMS}
+
+The next logical consequence for us was to reduce the size of the dataset. We initially augmented the data, increasing the size of the dataset roughly 10-fold, to enable the models to better learn features of the turtle head patterns and avoid overfitting. Step by step, we cut out the different augmentations until we were back to the original, non-augmented dataset. Even this dramatic decrease of dataset size back to around 5000 images did still not allow us to train the models properly. We then went on to experiment with different buffer sizes for the shuffle procedures and different batch sizes to reduce the load on the RAM. Although decreasing both of these parameters seemed to free up RAM, a full training was still not possible. The EfficientNetV2, which was for now the model on which we tried to train, was able to run the fitting for 1-3 epochs before sessions crashed due to full RAM. Even further reducing the dataset size by increasing the number of minimum images per turtle from 10 up to 15, which lead to a further reduction of the total number of images to little over 3000, did still not allow for successful training.
+
+CNNs can generally be scaled along three dimensions: changing the depth of the network, i.e. the number of layers, the width of the network, e.g. by increasing the number of channels per convolutional layer, or by changing the resolution of the input images. Because we did not want to make major changes to the layer architecture of the models we use, we decided that downsampling the images would be the next measure to explore. The resolution we used so far yields $224\times224\times3=150528$ values per image, we reduced to $160\times160$ pixels with a resulting decrease of $\raisebox{-0.9ex}{\~{}} 50\%$ with regard to image values: $160\times160\times3=76.800$. Reducing the dataset size (although not the number of samples) again by half with this approach, we managed to successfully train the EfficientNetV2. We were not happy with this approach since reducing the image size potentially gives rise to unrecoverable loss of important information \citep{Zhang2011}. Further, both the EfficientNetV2 and the InceptionV3 expect input sizes of $224\times224$.
+
+Because of this, we turned to Google Colab to execute our pipeline. The resources there allowed us to return to the previous resolution of $224\times224$ pixels. Treating the minimum number of images per turtle (which directly affects the number of samples in the dataset) as a first hyperparameter to explore - we still could not run the training with the entire augmentation pipeline due to RAM restrictions - we found a dataset size of approximately 5000 images to max out on Colab's freely available resources. A table with how the minimum number of images affects the dataset size and median number of images per turtle can be found in table \ref{tab:minImages} in appendix \ref{apx:minImages}. Further naïvely exploring the batch size, we found batches of 64 samples to best work with the computational resources while still allowing for a feasible training speed. The convergence behaviour did not seem to be significantly affected by different batch sizes.
+
+A first run with both the EfficientNetV2 and InceptionV3 for 10 epochs to establish a baseline yielded the results shown in figure \ref{fig:efficientInceptionComparison}.
+
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=8cm]{images/efficient_inception_comparison.svg}
+    \caption{Categorical accuracy on training and validation data for EfficientNetV2 (train: orange, validation: blue) and InceptionV3 (train: light blue, validation: pink).}
+    \label{fig:efficientInceptionComparison}
+\end{figure}
+
+The EfficientNetV2 is able to achieve accuracy $97.02\%$ on the training set while the InceptionV3 - pre-trained on the same ImageNet21K - achieves $90.18\%$. Validation accuracies are $49.83\%$ and $17.01\%$, respectively, and test accuracies are $50.42\%$ and $16.25\%$, suggesting that the InceptionV3 actually overfits on the training data. Although no definite convergence behaviour could be seen at this point, we decided to focus on the EfficientNetV2 -- mainly due to the limited computational resources. We can, however, not draw any meaningful conclusion regarding the InceptionV3 since we did not explore this direction any further.
+
+After establishing this baseline using only non-augmented images, we went on to assess to what extent the different augmentations influence model performance. We first reduced the size of the dataset by increasing the minimum number of images per turtle to 13 (from 10), and then augmented a part of this data using only a single augmentation technique to get the image number up to roughly 5000 again. The comparison between baseline and augmentations, which can be seen in figure \ref{tab:augmentationComparison}, has to seen skeptically, though, because increasing the number of required images per turtle does a) significantly reduce the number of classes (unique turtles) from 254 to 150 and b) provide more total data per class, which theoretically should allow the model to better capture the underlying distribution.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|l|l|l|}
+    \cline{2-4}
+                                        & \textbf{Train} & \textbf{Validation} & \textbf{Test} \\ \hline
+    \multicolumn{1}{|l|}{Baseline}      & 97.02\%        & 49.83\%             & 50.42\%       \\ \hline
+    \multicolumn{1}{|l|}{180° rotation} & 93.14\%        & 89.38\%             & 58.98\%       \\ \hline
+    \multicolumn{1}{|l|}{Gauss-filter}  & 96.76\%        & 96.72\%             & 63.80\%       \\ \hline
+    \multicolumn{1}{|l|}{Random HSV}    & 98.67\%        & 98.46\%             & 56.77\%       \\ \hline
+    \multicolumn{1}{|l|}{Noise}         & 92.27\%        & 86.15\%             & 56.77\%       \\ \hline
+    \end{tabular}
+    \caption[]{Categorical accuracy of EfficientNetV2 on differently augmented datasets after 10 epochs.}
+    \label{tab:augmentationComparison}
+\end{table}
+
+As can be seen, validation and test accuracies greatly benefit from all augmentations, with the Gaussian filtering considerably outperforming the other techniques on the test data.
