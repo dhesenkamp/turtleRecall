@@ -7,9 +7,7 @@ This repository contains all files associated with our final project for the abo
 
 ## Virtual environment
 
-To continue, make sure that you have a local distribution of [Conda] installed (e.g. Anaconda, miniconda, miniforge). The code in this repo has been written and tested on an Apple Silicon device with Apple's `tensorflow-macos` distribution.
-
-__environment file will be added in due time__
+To continue, make sure that you have a local distribution of Conda installed (e.g. Anaconda, miniconda, miniforge). The code in this repo has been written and tested on an Apple Silicon device. Create a local environment with the `environment.yml` file to be able to execute code from the `turtleRecall.ipynb` notebook.
 
 ## Repository Structure
 
@@ -17,6 +15,7 @@ __environment file will be added in due time__
 - `documentation`: Written documentation of the project, including LaTeX source files
 - `functions`: Helper functions used in the main notebook
 - `models`: Code to create the models we used
+- `environment.yml`: Environment in which this project was built
 - `turtleRecall.ipynb`: Main notebook with pipeline for the entire project
 - `turtleRecallColab.ipynb`: Main notebook adapted for use with Google Colab. Works as standalone, all helper functions, models, and utility variables are included
 - `utils.py`: Utilities
