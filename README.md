@@ -1,4 +1,4 @@
-# Turtle Recall: Wildlife Conservation with Machine Learning
+# Turtle Recognition Using Deep Convolutional Neural Networks
 Final Project for **Implementing ANNs with TensorFlow**  
 WS 21/22, Osnabrueck University  
 Dennis Hesenkamp, Lennart Zastrow, Madhuri Ramesh  
