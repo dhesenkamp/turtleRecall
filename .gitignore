@@ -166,3 +166,4 @@ cython_debug/
 
 # log files from tensorboard
 logs/
+logs/**
