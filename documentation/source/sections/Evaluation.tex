@@ -3,7 +3,18 @@
 
 When finally wanting to run and evaluate the models, we encountered problems with the execution of our pipeline. It turned out that the training process requires dramatically more computational resources than we anticipated - more, at least, than our local machines could handle. We tried different approaches to cope with this problem: As a first step, we skipped the AlexNet as baseline model. It has a huge number of trainable parameters compared to the pre-trained EfficientNetV2 (small amount of trainable parameters) and InceptionV3 (somewhat in the middle between the former two), requiring much more backpropagation computations within the training. Unfortunately, just having fewer trainable parameters did not reduce the computational load enough for us to be able to train the models.
 
-\textbf{INSERT TABLE WITH PARAMS}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|c|c|}
+    \cline{2-3}
+                                                     & Trainable parameters & Total parameters \\ \hline
+    \multicolumn{1}{|l|}{\textbf{AlexNet}}           & 47,790,398           & 47,793,150       \\ \hline
+    \multicolumn{1}{|l|}{\textbf{EfficientNetV2-B0}} & 6,184,078            & 6,244,686        \\ \hline
+    \multicolumn{1}{|l|}{\textbf{InceptionV3}}       & 22,288,798           & 22,323,230       \\ \hline
+    \end{tabular}
+    \caption{Parameters per model with 254 classes. Number of classes only insignificantly affects total number of parameters.}
+    \label{tab:paramsPerModel}
+\end{table}
 
 The next logical consequence for us was to reduce the size of the dataset. We initially augmented the data, increasing the size of the dataset roughly 10-fold, to enable the models to better learn features of the turtle head patterns and avoid overfitting. Step by step, we cut out the different augmentations until we were back to the original, non-augmented dataset. Even this dramatic decrease of dataset size back to around 5000 images did still not allow us to train the models properly. We then went on to experiment with different buffer sizes for the shuffle procedures and different batch sizes to reduce the load on the RAM. Although decreasing both of these parameters seemed to free up RAM, a full training was still not possible. The EfficientNetV2, which was for now the model on which we tried to train, was able to run the fitting for 1-3 epochs before sessions crashed due to full RAM. Even further reducing the dataset size by increasing the number of minimum images per turtle from 10 up to 15, which lead to a further reduction of the total number of images to little over 3000, did still not allow for successful training.
 
