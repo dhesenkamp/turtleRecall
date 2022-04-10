@@ -3,7 +3,7 @@ Final Project for **Implementing ANNs with TensorFlow**
 WS 21/22, Osnabrueck University  
 Dennis Hesenkamp, Lennart Zastrow, Madhuri Ramesh  
 
-This repository contains all files associated with our final project for the abovementioned course. Idea and data come from Zindi's [Turtle Recall: Conversation Challenge](https://zindi.africa/competitions/turtle-recall-conservation-challenge). Implementations are our own if not noted otherwise.
+This repository contains all files associated with our final project for the abovementioned course. Idea and data come from Zindi's [Turtle Recall: Conversation Challenge](https://zindi.africa/competitions/turtle-recall-conservation-challenge).
 
 ## Virtual environment
 
